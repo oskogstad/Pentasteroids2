@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdcisqexwvepd"]
+[gd_scene load_steps=4 format=3 uid="uid://bdcisqexwvepd"]
 
+[ext_resource type="Texture2D" uid="uid://b0tgp1v3c3tvi" path="res://icon.svg" id="1_211rm"]
 [ext_resource type="Texture2D" uid="uid://d36xpc6x3kn6d" path="res://sprites/spaceShooter2_spritesheet_2X.png" id="1_xl0jq"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_7ny80"]
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(24, 24)
+texture = ExtResource("1_211rm")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 rotation = -0.39619
@@ -14,3 +19,5 @@ script = ExtResource("2_7ny80")
 texture = ExtResource("1_xl0jq")
 region_enabled = true
 region_rect = Rect2(440, 800, 342, 301)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
