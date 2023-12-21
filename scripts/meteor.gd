@@ -12,40 +12,33 @@ func set_random_position():
 	
 	var startingEdge = randi() % 4
 	var camPos = vPort.get_camera_2d().get_screen_center_position()
-	print(camPos.x)
-	print(camPos.y)
 	
 	match startingEdge: 
 		StartingEdge.Top:
-			print("starting top")
 			global_position.y = camPos.y - vPortSize.y/2
-			global_position.x = randi_range(camPos.x - (vPortSize.x/2), camPos.x + (vPortSize.x/2))
+			global_position.x = get_random_axis_position(camPos.x, vPortSize.x)
 		StartingEdge.Bottom:
-			print("starting bottom")
 			global_position.y = camPos.y + vPortSize.y/2
-			global_position.x = randi_range(camPos.x - (vPortSize.x/2), camPos.x + (vPortSize.x/2))
+			global_position.x = get_random_axis_position(camPos.x, vPortSize.x)
 		StartingEdge.Left:
-			print("starting left")
-			global_position.y = randi_range(camPos.y - (vPortSize.y/2), camPos.y + (vPortSize.y/2))
+			global_position.y = get_random_axis_position(camPos.y, vPortSize.y)
 			global_position.x = camPos.x - vPortSize.x/2
 		StartingEdge.Right:
-			print("starting right")
-			global_position.y = randi_range(camPos.y - (vPortSize.y/2), camPos.y + (vPortSize.y/2))
+			global_position.y = get_random_axis_position(camPos.y, vPortSize.y)
 			global_position.x = camPos.x + vPortSize.x/2
 	var postring = "new pos: %s"
-	print(postring % position)
+
+func get_random_axis_position(camPos: int, vPortSize: int):
+	return randi_range(camPos - vPortSize/2, camPos + vPortSize/2)
 			
 func _ready():
 	set_random_position()
-	#speed_x = randf_range(-MAX_SPEED, MAX_SPEED)
-	#speed_y = randf_range(-MAX_SPEED, MAX_SPEED)
 
 func _physics_process(delta):
 	var camPos = get_viewport().get_camera_2d().get_screen_center_position()
-	velocity = position.direction_to(camPos) * MAX_SPEED
+	velocity = global_position.direction_to(camPos) * MAX_SPEED
 	move_and_slide()
+	rotation_degrees += 1
 	
 	if (Input.is_key_pressed(KEY_0)):
 		set_random_position()
-	#position.x += speed_x
-	#position.y += speed_y
