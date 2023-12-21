@@ -3,7 +3,7 @@ extends CharacterBody2D
 var speed: float = 1500
 var acceleration: float = 15000
 var friction: float = acceleration / speed
-const tractionValue: int = 2
+const tractionValue: int = 1
 
 func _process(delta: float) -> void:
 	apply_traction(delta)
