@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 func _physics_process(delt: float) -> void:
 	move_and_slide()
 	look_at(get_global_mouse_position())
-	rotation += 90
+	rotation_degrees += 90
 	
 func apply_traction(delta: float) -> void:
 	var traction: Vector2 = Vector2()

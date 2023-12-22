@@ -26,7 +26,6 @@ func set_random_position():
 		StartingEdge.Right:
 			global_position.y = get_random_axis_position(camPos.y, vPortSize.y)
 			global_position.x = camPos.x + vPortSize.x/2
-	var postring = "new pos: %s"
 
 func get_random_axis_position(camPos: int, vPortSize: int):
 	return randi_range(camPos - vPortSize/2, camPos + vPortSize/2)
