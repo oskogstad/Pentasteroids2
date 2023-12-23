@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
 var MAX_SPEED: int = 400
-var speed_x: float = 0
-var speed_y:  float = 0
 
 enum StartingEdge { Top, Bottom, Left, Right }
 

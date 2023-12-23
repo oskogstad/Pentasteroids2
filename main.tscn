@@ -1,24 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdcisqexwvepd"]
+[gd_scene load_steps=4 format=3 uid="uid://bdcisqexwvepd"]
 
 [ext_resource type="Texture2D" uid="uid://b0tgp1v3c3tvi" path="res://icon.svg" id="1_211rm"]
+[ext_resource type="Script" path="res://MeteorSpawner.gd" id="3_6jscr"]
 [ext_resource type="PackedScene" uid="uid://i02msisvu2wp" path="res://player.tscn" id="4_gw4o8"]
-[ext_resource type="Script" path="res://scripts/meteor.gd" id="4_ng7qe"]
-[ext_resource type="Texture2D" uid="uid://cfs3h8s3ox42b" path="res://sprites/meteor_1.png" id="4_vpnb0"]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainGameNode" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 
-[node name="GodotRobot" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(24, 24)
 texture = ExtResource("1_211rm")
 
-[node name="Meteor" type="CharacterBody2D" parent="."]
-script = ExtResource("4_ng7qe")
-
-[node name="Sprite2D" type="Sprite2D" parent="Meteor"]
-texture = ExtResource("4_vpnb0")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Meteor"]
-polygon = PackedVector2Array(19, -220.8, 19, -219.4, 124, -180.4, 124, -179.2, 135, -173.2, 135, -170.5, 211, -61.6, 211, -53, 220, 36.1, 220, 88, 113.9, 206, 107.3, 206, 19.9, 221, -25, 221, -138, 187.5, -138, 185.7, -205, 96.7, -205, 94.8, -218, 78.7, -218, 64, -220, 8.5, -220, -47, -122, -177, -118.5, -177, -9, -221, 16.7, -221)
-
 [node name="Player" parent="." instance=ExtResource("4_gw4o8")]
+
+[node name="MeteorSpawner" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+script = ExtResource("3_6jscr")
+
+[connection signal="timeout" from="MeteorSpawner" to="MeteorSpawner" method="_on_timeout"]
