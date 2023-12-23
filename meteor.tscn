@@ -6,7 +6,7 @@
 [node name="Meteor" type="CharacterBody2D"]
 script = ExtResource("1_p51iv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="MeteorSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_owkw1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

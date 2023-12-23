@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var MAX_SPEED: int = 400
+var spinDegrees = randf_range(-2, 2)
 
 enum StartingEdge { Top, Bottom, Left, Right }
 
@@ -29,13 +30,17 @@ func get_random_axis_position(camPos: int, vPortSize: int):
 	return randi_range(camPos - vPortSize/2, camPos + vPortSize/2)
 			
 func _ready():
+	var textureNumber = randi_range(1, 4)
+	var texturePathTemplate = "res://sprites/meteor_%d.png"
+	var texturePath = texturePathTemplate % textureNumber
+	$MeteorSprite.texture = load(texturePath)
 	set_random_position()
 
 func _physics_process(delta):
 	var camPos = get_viewport().get_camera_2d().get_screen_center_position()
 	velocity = global_position.direction_to(camPos) * MAX_SPEED
 	move_and_slide()
-	rotation_degrees += 1
+	rotation_degrees += spinDegrees
 	
 	if (Input.is_key_pressed(KEY_0)):
 		set_random_position()
