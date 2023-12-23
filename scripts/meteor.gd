@@ -41,6 +41,3 @@ func _physics_process(delta):
 	velocity = global_position.direction_to(camPos) * MAX_SPEED
 	move_and_slide()
 	rotation_degrees += spinDegrees
-	
-	if (Input.is_key_pressed(KEY_0)):
-		set_random_position()
