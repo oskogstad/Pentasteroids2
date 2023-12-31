@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 var MAX_SPEED: int = 400
 var spinDegrees = randf_range(-2, 2)
@@ -38,6 +38,5 @@ func _ready():
 
 func _physics_process(delta):
 	var camPos = get_viewport().get_camera_2d().get_screen_center_position()
-	velocity = global_position.direction_to(camPos) * MAX_SPEED
-	move_and_slide()
+	linear_velocity = global_position.direction_to(camPos) * MAX_SPEED
 	rotation_degrees += spinDegrees
