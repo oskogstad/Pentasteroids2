@@ -1,8 +1,10 @@
 extends RigidBody2D
 
-var MAX_SPEED: int = 200
+var MAX_SPEED: int = 400
 var spinDegrees = randf_range(-2, 2)
+
 var exploding = false;
+
 enum StartingEdge { Top, Bottom, Left, Right }
 
 func set_random_position(vPort: Viewport):
@@ -27,11 +29,8 @@ func set_random_position(vPort: Viewport):
 
 func get_random_axis_position(camPos: int, vPortSize: int):
 	return randi_range(camPos - vPortSize/2, camPos + vPortSize/2)
-		
-func set_label(text):
-	$NumberLabel.text = text
 
-func test(vPort: Viewport):
+func setup(vPort: Viewport):
 	var textureNumber = randi_range(1, 1)
 	var texturePathTemplate = "res://sprites/meteor_%d.png"
 	var texturePath = texturePathTemplate % textureNumber
@@ -58,4 +57,3 @@ func _on_collision():
 		exploding = true
 		var parent = get_parent()
 		parent.remove_child(self)
-		queue_free()

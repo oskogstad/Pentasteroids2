@@ -5,13 +5,12 @@ func spawn_meteor():
 	var Meteor = load("res://meteor.tscn")
 	var instance = Meteor.instantiate()
 	instance.name = "%d - Meteor" % meteor_number
-	instance.set_label("Nr. %d" % meteor_number)
 	var vPort = get_parent().get_viewport()
-	instance.test(vPort)
+	instance.setup(vPort)
 	add_child(instance)
 	meteor_number += 1
 
 #func _physics_process(delta):
 func _on_timeout():
 	spawn_meteor()
-	wait_time = randi_range(4, 6)
+	wait_time = randi_range(2, 4)

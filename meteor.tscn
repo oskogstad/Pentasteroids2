@@ -12,14 +12,4 @@ texture = ExtResource("2_owkw1")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(19, -220.8, 19, -219.4, 124, -180.4, 124, -179.2, 135, -173.2, 135, -170.5, 211, -61.6, 211, -53, 220, 36.1, 220, 88, 113.9, 206, 107.3, 206, 19.9, 221, -25, 221, -138, 187.5, -138, 185.7, -205, 96.7, -205, 94.8, -218, 78.7, -218, 64, -220, 8.5, -220, -47, -122, -177, -118.5, -177, -9, -221, 16.7, -221)
 
-[node name="NumberLabel" type="Label" parent="."]
-offset_left = -251.0
-offset_top = -186.0
-offset_right = -151.0
-offset_bottom = -112.0
-scale = Vector2(5, 5)
-text = "Test"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
