@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed: float = 1500
+var speed: float = 1000
 var acceleration: float = 15000
 var friction: float = acceleration / speed
 const tractionValue: int = 1
@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	apply_traction(delta)
 	apply_friction(delta)
 
-func _physics_process(delt: float) -> void:
+func _physics_process(_rdelt: float) -> void:
 	move_and_slide()
 	look_at(get_global_mouse_position())
 	rotation_degrees += 90
@@ -35,3 +35,6 @@ func apply_traction(delta: float) -> void:
 	
 func apply_friction(delta: float) -> void:
 	velocity -= velocity * friction * delta
+
+func take_dmg():
+	print("dmg!")

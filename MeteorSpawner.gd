@@ -1,14 +1,17 @@
 extends Timer
-
-func _ready():
-	spawn_meteor()
+var meteor_number = 1
 
 func spawn_meteor():
 	var Meteor = load("res://meteor.tscn")
 	var instance = Meteor.instantiate()
+	instance.name = "%d - Meteor" % meteor_number
+	instance.set_label("Nr. %d" % meteor_number)
+	var vPort = get_parent().get_viewport()
+	instance.test(vPort)
 	add_child(instance)
+	meteor_number += 1
 
+#func _physics_process(delta):
 func _on_timeout():
 	spawn_meteor()
-	print("timer done")
-	wait_time = randi_range(1, 3) # Replace with function body.
+	wait_time = randi_range(4, 6)

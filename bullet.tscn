@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://chv2mi8urc6dk"]
+
+[ext_resource type="Texture2D" uid="uid://ctoifkcfico3w" path="res://sprites/bullet.png" id="1_jy0xl"]
+
+[node name="Bullet" type="Node"]
+
+[node name="Bullet" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Bullet"]
+position = Vector2(-20, -48)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_jy0xl")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bullet"]
+position = Vector2(-20, -48)
+scale = Vector2(0.1, 0.1)
+polygon = PackedVector2Array(31, -40.2, 31, -38.9, 41, -29.9, 41, -27.5, 46, -20.4, 46, 19.4, 40.2, 31, 38.9, 31, 29.9, 41, 27.5, 41, 20.4, 46, -20.3, 46, -41, 30, -41, 27.5, -46, 20.4, -46, -19.4, -40.2, -31, -38.9, -31, -29.9, -41, -27.5, -41, -19.2, -46, 19.4, -46)
